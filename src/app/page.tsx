@@ -1,53 +1,45 @@
-import styles from './page.module.css'
+import { List, ListItem, Link, Typography, Container, Box } from '@mui/material';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        Timothy Miller
-      </div>
-
-      <div className={styles.center}>
-        Full stack development | GeoInformatics
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://github.com/tangoyankee/"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            GitHub<span>-&gt;</span>
-          </h2>
-          <p>Code projects</p>
-        </a>
-
-        <a
-          href="https://www.linkedin.com/in/timothy-m-miller/"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Linked In<span>-&gt;</span>
-          </h2>
-          <p>Professional connections</p>
-        </a>
-
-        <a
-          href="https://dev.to/tangoyankee"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Dev To<span>-&gt;</span>
-          </h2>
-          <p>Dev Community Blog</p>
-        </a>
-      </div>
+    <main>
+        <Container>
+          <Typography variant='h4' component='h1'>
+            Timothy Miller
+          </Typography>
+          <Typography paragraph={ true }>
+            Full stack development | GeoInformatics
+          </Typography>
+          <List>
+            <ListItem>
+              <Link
+                href="https://github.com/tangoyankee/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub: code projects
+                </Link>
+            </ListItem>
+            <ListItem>
+              <Link
+                href="https://www.linkedin.com/in/timothy-m-miller/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Linked In: professional connections
+              </Link>
+            </ListItem>
+              <ListItem>
+                <Link
+                  href="https://dev.to/tangoyankee"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Dev To: dev community blog
+                </Link>
+              </ListItem>
+          </List>
+        </Container>
     </main>
   )
 }
