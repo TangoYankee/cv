@@ -31,7 +31,7 @@ export default function App() {
             rel="noopener noreferrer"
             color="#ffffff"
           >
-            GitHub: code projects
+            GitHub
           </Link>
           <Link
             href="https://www.linkedin.com/in/timothy-m-miller/"
@@ -39,7 +39,7 @@ export default function App() {
             rel="noopener noreferrer"
             color="#ffffff"
           >
-            Linked In: professional connections
+            Linked In
           </Link>
           <Link
             href="https://dev.to/tangoyankee"
@@ -47,7 +47,7 @@ export default function App() {
             rel="noopener noreferrer"
             color="#ffffff"
           >
-            Dev To: dev community blog
+            Dev To
           </Link>
         </Toolbar>
       </AppBar>
