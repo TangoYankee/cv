@@ -11,8 +11,9 @@ import {
   Toolbar,
   Typography,
 } from "@mui/material";
-import { geoActions, geoReducer, initialGeoState } from "./reducers/geo";
-import { GeoCtx } from "./context/geo";
+import { geoReducer, initialGeoState } from "./state/reducer";
+import { geoActions } from "./state/actions";
+import { GeoCtx } from "./state/context";
 
 const places = [
   {

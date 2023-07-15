@@ -5,7 +5,7 @@ import DeckGL, { GeoJsonLayer } from "deck.gl/typed";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext } from "react";
-import { GeoCtx } from "./context/geo";
+import { GeoCtx } from "./state/context";
 
 const points = {
   type: "FeatureCollection",
