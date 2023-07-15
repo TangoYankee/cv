@@ -7,7 +7,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext } from "react";
 import { GeoCtx } from "./context/geo";
 
-const point = {
+const points = {
   type: "FeatureCollection",
   features: [
     {
@@ -20,21 +20,39 @@ const point = {
         type: "Point",
       },
     },
+    {
+      type: "Feature",
+      properties: {
+        id: 1,
+      },
+      geometry: {
+        coordinates: [-74.0163, 40.7032],
+        type: "Point",
+      },
+    },
   ],
 };
 
 export default function GeoMap() {
   const {
+    geoState: { activePointId },
     geoActionsDispatch: { updateActivePointId },
   } = useContext(GeoCtx);
 
   const layers = [
     new GeoJsonLayer({
       id: "coding",
-      data: point,
+      data: points,
       pointRadiusMinPixels: 5,
       pickable: true,
       onClick: (info) => updateActivePointId(info.object.properties.id),
+      getFillColor: (d) =>
+        d && d.properties && d.properties.id === activePointId
+          ? [129, 192, 222]
+          : [34, 40, 35],
+      updateTriggers: {
+        getFillColor: [activePointId],
+      },
     }),
   ];
 

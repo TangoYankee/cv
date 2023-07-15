@@ -37,7 +37,6 @@ export const geoActions = (dispatch: Dispatch<GeoAction>) => {
 export function geoReducer(state: GeoState, action: GeoAction): GeoState {
   switch (action.type) {
     case GEO_ACTION_TYPE.UPDATE_ACTIVE_POINT_ID: {
-      console.info("activePointId", action.payload);
       return {
         ...state,
         activePointId: action.payload,
