@@ -4,6 +4,9 @@ import Map from "react-map-gl/maplibre";
 import DeckGL, { GeoJsonLayer } from "deck.gl/typed";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { useContext } from "react";
+import { updateActivePointId } from "./reducers/geo";
+import { GeoCtx } from "./context/geo";
 
 const point = {
   type: "FeatureCollection",
@@ -11,7 +14,7 @@ const point = {
     {
       type: "Feature",
       properties: {
-        id: 0
+        id: 0,
       },
       geometry: {
         coordinates: [-74.0105, 40.7082],
@@ -21,15 +24,21 @@ const point = {
   ],
 };
 
-const layers = [
-  new GeoJsonLayer({
-    id: "coding",
-    data: point,
-    pointRadiusMinPixels: 5,
-  }),
-];
-
 export default function GeoMap() {
+  const { geoDispatch } = useContext(GeoCtx);
+
+  const updateActivePointIdAction = updateActivePointId(geoDispatch);
+
+  const layers = [
+    new GeoJsonLayer({
+      id: "coding",
+      data: point,
+      pointRadiusMinPixels: 5,
+      pickable: true,
+      onClick: (info) => updateActivePointIdAction(info.object.properties.id),
+    }),
+  ];
+
   return (
     <DeckGL
       layers={layers}
