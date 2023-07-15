@@ -48,8 +48,8 @@ export default function GeoMap() {
       onClick: (info) => updateActivePointId(info.object.properties.id),
       getFillColor: (d) =>
         d && d.properties && d.properties.id === activePointId
-          ? [129, 192, 222]
-          : [34, 40, 35],
+          ? [123, 31, 162]
+          : [25, 118, 210],
       updateTriggers: {
         getFillColor: [activePointId],
       },

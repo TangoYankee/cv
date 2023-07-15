@@ -2,9 +2,28 @@
 
 import { useReducer } from "react";
 import GeoMap from "./geoMap";
-import { AppBar, Box, Link, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Button,
+  ButtonGroup,
+  Link,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import { geoActions, geoReducer, initialGeoState } from "./reducers/geo";
 import { GeoCtx } from "./context/geo";
+
+const places = [
+  {
+    id: 0,
+    name: "Equitable",
+  },
+  {
+    id: 1,
+    name: "Battery",
+  },
+];
 
 export default function App() {
   const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
@@ -14,14 +33,36 @@ export default function App() {
     <main>
       <GeoCtx.Provider value={{ geoState, geoActionsDispatch }}>
         <AppBar>
-          <Toolbar>
+          <Toolbar
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+            }}
+          >
             <Box>
               <Typography variant="h6" component="h1">
-                Timothy Miller (@tangoyankee)
+                Timothy Miller
               </Typography>
-              <Typography paragraph={true}>
-                Full stack development | GeoInformatics
-              </Typography>
+            </Box>
+            <Box>
+              <ButtonGroup variant="contained">
+                {places.map((place) => (
+                  <Button
+                    key={place.id}
+                    onClick={() =>
+                      geoActionsDispatch.updateActivePointId(place.id)
+                    }
+                    color={
+                      geoState.activePointId === place.id
+                        ? "secondary"
+                        : "primary"
+                    }
+                  >
+                    {place.name}
+                  </Button>
+                ))}
+              </ButtonGroup>
             </Box>
           </Toolbar>
         </AppBar>
