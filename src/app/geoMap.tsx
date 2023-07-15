@@ -1,13 +1,38 @@
 "use client";
 
 import Map from "react-map-gl/maplibre";
-import DeckGL from "deck.gl/typed";
+import DeckGL, { GeoJsonLayer } from "deck.gl/typed";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+
+const point = {
+  type: "FeatureCollection",
+  features: [
+    {
+      type: "Feature",
+      properties: {
+        id: 0
+      },
+      geometry: {
+        coordinates: [-74.0105, 40.7082],
+        type: "Point",
+      },
+    },
+  ],
+};
+
+const layers = [
+  new GeoJsonLayer({
+    id: "coding",
+    data: point,
+    pointRadiusMinPixels: 5,
+  }),
+];
 
 export default function GeoMap() {
   return (
     <DeckGL
+      layers={layers}
       initialViewState={{
         longitude: -74.0008,
         latitude: 40.7018,
