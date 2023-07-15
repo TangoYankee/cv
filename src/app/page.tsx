@@ -3,15 +3,16 @@
 import { useReducer } from "react";
 import GeoMap from "./geoMap";
 import { AppBar, Box, Link, Toolbar, Typography } from "@mui/material";
-import { geoReducer, initialGeoState } from "./reducers/geo";
+import { geoActions, geoReducer, initialGeoState } from "./reducers/geo";
 import { GeoCtx } from "./context/geo";
 
 export default function App() {
   const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
+  const geoActionsDispatch = geoActions(geoDispatch);
 
   return (
     <main>
-      <GeoCtx.Provider value={{ geoState, geoDispatch }}>
+      <GeoCtx.Provider value={{ geoState, geoActionsDispatch }}>
         <AppBar>
           <Toolbar>
             <Box>

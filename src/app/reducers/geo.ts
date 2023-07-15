@@ -16,17 +16,23 @@ export type GeoAction = {
   payload: ActivePointId;
 };
 
+export type GeoActionsDispatch = {
+  updateActivePointId: (activePointId: ActivePointId) => void;
+};
+
 export const initialGeoState: GeoState = {
   activePointId: null,
 };
 
-export const updateActivePointId =
-  (dispatch: Dispatch<GeoAction>) => (activePointId: ActivePointId) => {
-    dispatch({
-      type: GEO_ACTION_TYPE.UPDATE_ACTIVE_POINT_ID,
-      payload: activePointId,
-    });
+export const geoActions = (dispatch: Dispatch<GeoAction>) => {
+  return {
+    updateActivePointId: (activePointId: ActivePointId) =>
+      dispatch({
+        type: GEO_ACTION_TYPE.UPDATE_ACTIVE_POINT_ID,
+        payload: activePointId,
+      }),
   };
+};
 
 export function geoReducer(state: GeoState, action: GeoAction): GeoState {
   switch (action.type) {
