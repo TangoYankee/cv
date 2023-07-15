@@ -11,7 +11,7 @@ const point = {
     {
       type: "Feature",
       properties: {
-        id: 0
+        id: 0,
       },
       geometry: {
         coordinates: [-74.0105, 40.7082],

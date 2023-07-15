@@ -1,7 +1,10 @@
+'use client';
+
 import GeoMap from "./geoMap";
 import { AppBar, Box, Link, Toolbar, Typography } from "@mui/material";
+import { wrapper } from "./store/store";
 
-export default function App() {
+function App() {
   return (
     <main>
       <AppBar>
@@ -54,3 +57,5 @@ export default function App() {
     </main>
   );
 }
+
+export default wrapper.withRedux(App);
