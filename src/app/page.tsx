@@ -1,45 +1,56 @@
-import { List, ListItem, Link, Typography, Container } from "@mui/material";
+import GeoMap from "./geoMap";
+import { AppBar, Box, Link, Toolbar, Typography } from "@mui/material";
 
-export default function Home() {
+export default function App() {
   return (
     <main>
-      <Container>
-        <Typography variant="h4" component="h1">
-          Timothy Miller
-        </Typography>
-        <Typography paragraph={true}>
-          Full stack development | GeoInformatics
-        </Typography>
-        <List>
-          <ListItem>
-            <Link
-              href="https://github.com/tangoyankee/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub: code projects
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link
-              href="https://www.linkedin.com/in/timothy-m-miller/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Linked In: professional connections
-            </Link>
-          </ListItem>
-          <ListItem>
-            <Link
-              href="https://dev.to/tangoyankee"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Dev To: dev community blog
-            </Link>
-          </ListItem>
-        </List>
-      </Container>
+      <AppBar>
+        <Toolbar>
+          <Box>
+            <Typography variant="h6" component="h1">
+              Timothy Miller (@tangoyankee)
+            </Typography>
+            <Typography paragraph={true}>
+              Full stack development | GeoInformatics
+            </Typography>
+          </Box>
+        </Toolbar>
+      </AppBar>
+      <GeoMap />
+      <AppBar sx={{ top: "auto", bottom: 0 }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-evenly",
+          }}
+        >
+          <Link
+            href="https://github.com/tangoyankee/"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="#ffffff"
+          >
+            GitHub: code projects
+          </Link>
+          <Link
+            href="https://www.linkedin.com/in/timothy-m-miller/"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="#ffffff"
+          >
+            Linked In: professional connections
+          </Link>
+          <Link
+            href="https://dev.to/tangoyankee"
+            target="_blank"
+            rel="noopener noreferrer"
+            color="#ffffff"
+          >
+            Dev To: dev community blog
+          </Link>
+        </Toolbar>
+      </AppBar>
     </main>
   );
 }
