@@ -7,13 +7,13 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Link,
   Toolbar,
   Typography,
-} from "@mui/material";
+} from "./components/ui";
 import { geoReducer, initialGeoState } from "./state/reducer";
 import { geoActions } from "./state/actions";
 import { GeoCtx } from "./state/context";
+import { Footer } from "./components/footer";
 
 const places = [
   {
@@ -68,40 +68,7 @@ export default function App() {
           </Toolbar>
         </AppBar>
         <GeoMap />
-        <AppBar sx={{ top: "auto", bottom: 0 }}>
-          <Toolbar
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-evenly",
-            }}
-          >
-            <Link
-              href="https://github.com/tangoyankee/"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="#ffffff"
-            >
-              GitHub
-            </Link>
-            <Link
-              href="https://www.linkedin.com/in/timothy-m-miller/"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="#ffffff"
-            >
-              Linked In
-            </Link>
-            <Link
-              href="https://dev.to/tangoyankee"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="#ffffff"
-            >
-              Dev To
-            </Link>
-          </Toolbar>
-        </AppBar>
+        <Footer />
       </GeoCtx.Provider>
     </main>
   );
