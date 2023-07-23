@@ -7,19 +7,13 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext } from "react";
 import { GeoCtx } from "./state/context";
 import { placePoints } from "./data";
-import {
-  PLACE_FILL_CATEGORIES,
-  PLACE_FILL_OPERATION,
-  getPointOutlineColor,
-} from "./geoStyles";
+import { PLACE_FILL_OPERATION, getPointOutlineColor } from "./geoStyles";
 
 export default function GeoMap() {
   const {
-    geoState: { activePointId },
+    geoState: { activePointId, placeFillCategory },
     geoActionsDispatch: { updateActivePointId },
   } = useContext(GeoCtx);
-
-  const placeFill = PLACE_FILL_CATEGORIES.PLACEMENT;
 
   const layers = [
     new GeoJsonLayer({
@@ -31,9 +25,11 @@ export default function GeoMap() {
       onClick: (info) => updateActivePointId(info.object.properties.id),
       getLineColor: (d) =>
         getPointOutlineColor(d?.properties?.id, activePointId),
-      getFillColor: (d) => PLACE_FILL_OPERATION[placeFill](d?.properties?.id),
+      getFillColor: (d) =>
+        PLACE_FILL_OPERATION[placeFillCategory](d?.properties?.id),
       updateTriggers: {
         getLineColor: [activePointId],
+        getFillColor: [placeFillCategory],
       },
     }),
   ];

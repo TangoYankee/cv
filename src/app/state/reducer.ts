@@ -1,7 +1,9 @@
+import { PLACE_FILL_CATEGORIES } from "../types";
 import { GEO_ACTION_TYPE, GeoAction, GeoState } from "./types";
 
 export const initialGeoState: GeoState = {
   activePointId: null,
+  placeFillCategory: PLACE_FILL_CATEGORIES.PLACEMENT,
 };
 
 export function geoReducer(state: GeoState, action: GeoAction): GeoState {
