@@ -46,12 +46,14 @@ export default function GeoMap() {
       pointRadiusMinPixels: 5,
       pickable: true,
       onClick: (info) => updateActivePointId(info.object.properties.id),
-      getFillColor: (d) =>
+      getLineColor: d => 
         d && d.properties && d.properties.id === activePointId
           ? [123, 31, 162]
           : [25, 118, 210],
+      lineWidthMinPixels: 2,
+      getFillColor: [0, 0, 0],
       updateTriggers: {
-        getFillColor: [activePointId],
+        getLineColor: [activePointId],
       },
     }),
   ];
