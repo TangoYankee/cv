@@ -7,7 +7,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext } from "react";
 import { GeoCtx } from "./state/context";
 import { placePoints } from "./data";
-import { getPointOutlineColor } from "./geoStyles";
+import { getPlaceTypeFill, getPointOutlineColor } from "./geoStyles";
 
 export default function GeoMap() {
   const {
@@ -25,6 +25,7 @@ export default function GeoMap() {
       onClick: (info) => updateActivePointId(info.object.properties.id),
       getLineColor: (d) =>
         getPointOutlineColor(d?.properties?.id, activePointId),
+      getFillColor: (d) => getPlaceTypeFill(d?.properties?.id),
       updateTriggers: {
         getLineColor: [activePointId],
       },

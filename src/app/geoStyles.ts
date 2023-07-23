@@ -15,3 +15,20 @@ export const getPointOutlineColor = (
   if (targetId === activeId) return activeOutlineColor;
   return defaultOutlineColor;
 };
+
+export const getPlaceTypeFill = (placeId: number | undefined): RGBColor => {
+  if (placeId === undefined) return voidColor;
+  const placeType = placeTypes[placeId];
+  if (placeType === undefined) return voidColor;
+  switch (placeType) {
+    case "building": {
+      return [0, 0, 255, 255];
+    }
+    case "park": {
+      return [0, 255, 0, 255];
+    }
+    default: {
+      return voidColor;
+    }
+  }
+};
