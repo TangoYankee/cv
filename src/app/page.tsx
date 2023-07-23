@@ -14,17 +14,7 @@ import { geoReducer, initialGeoState } from "./state/reducer";
 import { geoActions } from "./state/actions";
 import { GeoCtx } from "./state/context";
 import { Footer } from "./components/footer";
-
-const places = [
-  {
-    id: 0,
-    name: "Equitable",
-  },
-  {
-    id: 1,
-    name: "Battery",
-  },
-];
+import { places, placeNames } from "./data";
 
 export default function App() {
   const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
@@ -48,19 +38,19 @@ export default function App() {
             </Box>
             <Box>
               <ButtonGroup variant="contained">
-                {places.map((place) => (
+                {places.map((placeId) => (
                   <Button
-                    key={place.id}
+                    key={placeId}
                     onClick={() =>
-                      geoActionsDispatch.updateActivePointId(place.id)
+                      geoActionsDispatch.updateActivePointId(placeId)
                     }
                     color={
-                      geoState.activePointId === place.id
+                      geoState.activePointId === placeId
                         ? "secondary"
                         : "primary"
                     }
                   >
-                    {place.name}
+                    {placeNames[placeId]}
                   </Button>
                 ))}
               </ButtonGroup>
