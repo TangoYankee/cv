@@ -1,5 +1,5 @@
 import { RGBColor } from "maplibre-gl";
-import { placeTypes } from "./data";
+import { placePlacements, placeTypes } from "./data";
 import { ActivePointId } from "./state/types";
 
 const voidColor: RGBColor = [0, 0, 0, 255];
@@ -31,4 +31,33 @@ export const getPlaceTypeFill = (placeId: number | undefined): RGBColor => {
       return voidColor;
     }
   }
+};
+
+export const getPlacePlacementFill = (
+  placeId: number | undefined,
+): RGBColor => {
+  if (placeId === undefined) return voidColor;
+  const placePlacement = placePlacements[placeId];
+  if (placePlacement === undefined) return voidColor;
+  switch (placePlacement) {
+    case "inland": {
+      return [255, 0, 0, 255];
+    }
+    case "waterfront": {
+      return [0, 0, 255, 255];
+    }
+    default: {
+      return voidColor;
+    }
+  }
+};
+
+export const PLACE_FILL_CATEGORIES = {
+  TYPE: "placeFill/TYPE",
+  PLACEMENT: "placeFill/PLACEMENT",
+};
+
+export const PLACE_FILL_OPERATION = {
+  [PLACE_FILL_CATEGORIES.TYPE]: getPlaceTypeFill,
+  [PLACE_FILL_CATEGORIES.PLACEMENT]: getPlacePlacementFill,
 };
