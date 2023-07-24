@@ -14,11 +14,12 @@ import { geoReducer, initialGeoState } from "./state/reducer";
 import { geoActions } from "./state/actions";
 import { GeoCtx } from "./state/context";
 import { Footer } from "./components/footer";
-import { places, placeNames } from "./data";
+import { Sidebar } from "./components/sidebar.tsx";
 
 export default function App() {
   const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
   const geoActionsDispatch = geoActions(geoDispatch);
+  const { openSidebar } = geoActionsDispatch;
 
   return (
     <main>
@@ -38,25 +39,12 @@ export default function App() {
             </Box>
             <Box>
               <ButtonGroup variant="contained">
-                {places.map((placeId) => (
-                  <Button
-                    key={placeId}
-                    onClick={() =>
-                      geoActionsDispatch.updateActivePointId(placeId)
-                    }
-                    color={
-                      geoState.activePointId === placeId
-                        ? "secondary"
-                        : "primary"
-                    }
-                  >
-                    {placeNames[placeId]}
-                  </Button>
-                ))}
+                <Button onClick={openSidebar}>Style Sidebar</Button>
               </ButtonGroup>
             </Box>
           </Toolbar>
         </AppBar>
+        <Sidebar />
         <GeoMap />
         <Footer />
       </GeoCtx.Provider>

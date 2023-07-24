@@ -1,6 +1,7 @@
 import { RGBColor } from "maplibre-gl";
 import { placePlacements, placeTypes } from "./data";
 import { ActivePointId } from "./state/types";
+import { PLACE_FILL_CATEGORY } from "./types";
 
 const voidColor: RGBColor = [0, 0, 0, 255];
 const defaultOutlineColor: RGBColor = [25, 118, 210, 255];
@@ -52,12 +53,7 @@ export const getPlacePlacementFill = (
   }
 };
 
-export const PLACE_FILL_CATEGORIES = {
-  TYPE: "placeFill/TYPE",
-  PLACEMENT: "placeFill/PLACEMENT",
-};
-
 export const PLACE_FILL_OPERATION = {
-  [PLACE_FILL_CATEGORIES.TYPE]: getPlaceTypeFill,
-  [PLACE_FILL_CATEGORIES.PLACEMENT]: getPlacePlacementFill,
+  [PLACE_FILL_CATEGORY.TYPE]: getPlaceTypeFill,
+  [PLACE_FILL_CATEGORY.PLACEMENT]: getPlacePlacementFill,
 };
