@@ -1,31 +1,15 @@
-import { useContext } from "react";
-import { AppBar, Box, Button, ButtonGroup, Toolbar, Typography } from "../ui";
-import { GeoCtx } from "@/app/state/context";
+import { Box, Toolbar, Typography } from "../ui";
 
 export function Header() {
-  const {
-    geoActionsDispatch: { openSidebar },
-  } = useContext(GeoCtx);
   return (
-    <AppBar>
-      <Toolbar
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-        }}
-      >
+    <header>
+      <Toolbar>
         <Box>
           <Typography variant="h6" component="h1">
             Timothy Miller
           </Typography>
         </Box>
-        <Box>
-          <ButtonGroup variant="contained">
-            <Button onClick={openSidebar}>Style Sidebar</Button>
-          </ButtonGroup>
-        </Box>
       </Toolbar>
-    </AppBar>
+    </header>
   );
 }

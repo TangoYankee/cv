@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, FooterLink } from "../ui";
+import { Toolbar, FooterLink } from "../ui";
 
 const footerLinks = [
   {
@@ -17,7 +17,7 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <AppBar sx={{ top: "auto", bottom: 0 }}>
+    <footer>
       <Toolbar
         sx={{
           display: "flex",
@@ -31,6 +31,6 @@ export function Footer() {
           </FooterLink>
         ))}
       </Toolbar>
-    </AppBar>
+    </footer>
   );
 }

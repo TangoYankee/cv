@@ -8,7 +8,7 @@ export interface FooterLinkProps {
 
 export function FooterLink({ href, children }: FooterLinkProps) {
   return (
-    <Link target="_blank" rel="noopener noreferrer" color="#ffffff" href={href}>
+    <Link target="_blank" rel="noopener noreferrer" href={href}>
       {children}
     </Link>
   );

@@ -1,3 +1,4 @@
+import styles from "./layout.module.css";
 import type { Metadata } from "next";
 import React from "react";
 
@@ -13,7 +14,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className={styles.appBody}>{children}</body>
     </html>
   );
 }
