@@ -14,7 +14,7 @@ import { geoReducer, initialGeoState } from "./state/reducer";
 import { geoActions } from "./state/actions";
 import { GeoCtx } from "./state/context";
 import { Footer } from "./components/footer";
-import { Sidebar } from "./components/sidebar.tsx";
+import { Sidebar } from "./components/sidebar";
 
 export default function App() {
   const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
