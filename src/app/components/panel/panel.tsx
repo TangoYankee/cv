@@ -1,19 +1,15 @@
 import { places, placeNames } from "@/app/data";
-import { Drawer, Stack, ToggleButton, ToggleButtonGroup } from "../ui";
-import React, { useContext } from "react";
+import { PLACE_FILL_CATEGORY } from "@/app/types";
+import { Box, Stack, ToggleButton, ToggleButtonGroup } from "../ui";
 import { GeoCtx } from "@/app/state/context";
 import { ActivePointId } from "@/app/state/types";
-import { PLACE_FILL_CATEGORY } from "@/app/types";
+import React, { useContext } from "react";
 import { Option } from "@/types";
 
-export function Sidebar() {
+export function Panel() {
   const {
-    geoState: { activePointId, placeFillCategory, isSidebarOpen },
-    geoActionsDispatch: {
-      updateActivePointId,
-      updatePlaceFillCategory,
-      closeSidebar,
-    },
+    geoState: { activePointId, placeFillCategory },
+    geoActionsDispatch: { updateActivePointId, updatePlaceFillCategory },
   } = useContext(GeoCtx);
 
   const handleUpdateActivePointId = (
@@ -27,9 +23,8 @@ export function Sidebar() {
     _event: React.MouseEvent<HTMLElement>,
     requestedPlaceFillCategory: Option<PLACE_FILL_CATEGORY>,
   ) => updatePlaceFillCategory(requestedPlaceFillCategory);
-
   return (
-    <Drawer anchor="right" open={isSidebarOpen} onClick={closeSidebar}>
+    <Box>
       <Stack direction="row">
         <ToggleButtonGroup
           value={activePointId}
@@ -55,6 +50,6 @@ export function Sidebar() {
           <ToggleButton value={PLACE_FILL_CATEGORY.TYPE}>Type</ToggleButton>
         </ToggleButtonGroup>
       </Stack>
-    </Drawer>
+    </Box>
   );
 }
