@@ -1,26 +1,14 @@
-"use client";
-
-import { useReducer } from "react";
-import GeoMap from "./geoMap";
-import { geoReducer, initialGeoState } from "./state/reducer";
-import { geoActions } from "./state/actions";
-import { GeoCtx } from "./state/context";
-import { Footer } from "./components/footer";
-import { Sidebar } from "./components/sidebar";
-import { Header } from "./components/header/header";
+import { Header } from "@/app/components/header";
+import { Main } from "@/app/Main";
+import { Footer } from "@/app/components/footer";
+import styles from "./page.module.css";
 
 export default function App() {
-  const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
-  const geoActionsDispatch = geoActions(geoDispatch);
-
   return (
-    <main>
-      <GeoCtx.Provider value={{ geoState, geoActionsDispatch }}>
-        <Header />
-        <GeoMap />
-        <Sidebar />
-        <Footer />
-      </GeoCtx.Provider>
-    </main>
+    <div className={styles.appContainer}>
+      <Header />
+      <Main />
+      <Footer />
+    </div>
   );
 }
