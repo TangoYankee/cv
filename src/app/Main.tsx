@@ -1,17 +1,29 @@
 "use client";
 
-import { useReducer } from "react";
-import { geoReducer, initialGeoState } from "./state/reducer";
+import { useEffect, useReducer } from "react";
+import { createInitialGeoState, geoReducer } from "./state/reducer";
 import { geoActions } from "./state/actions";
 import { GeoCtx } from "./state/context";
 import GeoMap from "./geoMap";
 import { Panel } from "./components/panel";
 import { Box, useMediaQuery } from "./components/ui";
+import { SIMPLE_SCREEN_ORIENTATION } from "./types";
 
 export function Main() {
-  const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
+  const isScreenLandscape = useMediaQuery(
+    `(orientation: ${SIMPLE_SCREEN_ORIENTATION.LANDSCAPE})`,
+  );
+  const [geoState, geoDispatch] = useReducer(
+    geoReducer,
+    isScreenLandscape,
+    createInitialGeoState,
+  );
   const geoActionsDispatch = geoActions(geoDispatch);
-  const isScreenLandscape = useMediaQuery("(orientation: landscape)");
+  const { updateIsScreenLandscape } = geoActionsDispatch;
+
+  useEffect(() => {
+    updateIsScreenLandscape(isScreenLandscape);
+  }, [updateIsScreenLandscape, isScreenLandscape]);
 
   return (
     <main>

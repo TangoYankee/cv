@@ -15,5 +15,10 @@ export const geoActions = (dispatch: Dispatch<GeoAction>) => {
         type: GEO_ACTION_TYPE.UPDATE_PLACE_FILL_CATEGORY,
         payload: placeFillCategory,
       }),
+    updateIsScreenLandscape: (isScreenLandscape: boolean) =>
+      dispatch({
+        type: GEO_ACTION_TYPE.UPDATE_IS_SCREEN_LANDSCAPE,
+        payload: isScreenLandscape,
+      }),
   };
 };

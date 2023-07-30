@@ -1,10 +1,13 @@
 import { PLACE_FILL_CATEGORY } from "../types";
 import { GEO_ACTION_TYPE, GeoAction, GeoState } from "./types";
 
-export const initialGeoState: GeoState = {
-  activePointId: null,
-  placeFillCategory: PLACE_FILL_CATEGORY.PLACEMENT,
-};
+export function createInitialGeoState(isScreenLandscape: boolean): GeoState {
+  return {
+    activePointId: null,
+    placeFillCategory: PLACE_FILL_CATEGORY.PLACEMENT,
+    isScreenLandscape,
+  };
+}
 
 export function geoReducer(state: GeoState, action: GeoAction): GeoState {
   switch (action.type) {
@@ -28,6 +31,13 @@ export function geoReducer(state: GeoState, action: GeoAction): GeoState {
       return {
         ...state,
         placeFillCategory: nextPlaceFillCategory,
+      };
+    }
+    case GEO_ACTION_TYPE.UPDATE_IS_SCREEN_LANDSCAPE: {
+      const { payload: isScreenLandscape } = action;
+      return {
+        ...state,
+        isScreenLandscape,
       };
     }
     default:
