@@ -4,7 +4,6 @@ import { GEO_ACTION_TYPE, GeoAction, GeoState } from "./types";
 export const initialGeoState: GeoState = {
   activePointId: null,
   placeFillCategory: PLACE_FILL_CATEGORY.PLACEMENT,
-  isSidebarOpen: false,
 };
 
 export function geoReducer(state: GeoState, action: GeoAction): GeoState {
@@ -29,18 +28,6 @@ export function geoReducer(state: GeoState, action: GeoAction): GeoState {
       return {
         ...state,
         placeFillCategory: nextPlaceFillCategory,
-      };
-    }
-    case GEO_ACTION_TYPE.OPEN_SIDEBAR: {
-      return {
-        ...state,
-        isSidebarOpen: true,
-      };
-    }
-    case GEO_ACTION_TYPE.CLOSE_SIDEBAR: {
-      return {
-        ...state,
-        isSidebarOpen: false,
       };
     }
     default:
