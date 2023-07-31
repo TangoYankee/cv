@@ -23,7 +23,8 @@ export function Main() {
 
   useEffect(() => {
     updateIsScreenLandscape(isScreenLandscape);
-  }, [updateIsScreenLandscape, isScreenLandscape]);
+    /* eslint-disable-next-line react-hooks/exhaustive-deps */
+  }, [isScreenLandscape]);
 
   return (
     <main>
