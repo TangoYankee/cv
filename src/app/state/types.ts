@@ -1,10 +1,11 @@
 import { Option } from "@/types";
-import { PLACE_FILL_CATEGORY } from "../types";
+import { PLACE_FILL_CATEGORY, PORTRAIT_VIEW } from "../types";
 
 export enum GEO_ACTION_TYPE {
   UPDATE_ACTIVE_POINT_ID = "update_active_point_id",
   UPDATE_PLACE_FILL_CATEGORY = "update_place_fill_category",
   UPDATE_IS_SCREEN_LANDSCAPE = "update_is_screen_landscape",
+  UPDATE_PORTRAIT_VIEW = "update_portrait_view",
 }
 
 export type ActivePointId = Option<Number>;
@@ -13,6 +14,7 @@ export interface GeoState {
   activePointId: ActivePointId;
   placeFillCategory: PLACE_FILL_CATEGORY;
   isScreenLandscape: boolean;
+  portraitView: PORTRAIT_VIEW;
 }
 
 export type GeoAction =
@@ -27,6 +29,10 @@ export type GeoAction =
   | {
       type: GEO_ACTION_TYPE.UPDATE_IS_SCREEN_LANDSCAPE;
       payload: boolean;
+    }
+  | {
+      type: GEO_ACTION_TYPE.UPDATE_PORTRAIT_VIEW;
+      payload: Option<PORTRAIT_VIEW>;
     };
 
 export type GeoActionsDispatch = {
@@ -35,6 +41,7 @@ export type GeoActionsDispatch = {
     placeFillCategory: Option<PLACE_FILL_CATEGORY>,
   ) => void;
   updateIsScreenLandscape: (isScreenLandscape: boolean) => void;
+  updatePortraitView: (portraitView: Option<PORTRAIT_VIEW>) => void;
 };
 
 export type GeoCtxType = {

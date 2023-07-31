@@ -1,11 +1,12 @@
-import { PLACE_FILL_CATEGORY } from "../types";
+import { PLACE_FILL_CATEGORY, PORTRAIT_VIEW } from "../types";
 import { GEO_ACTION_TYPE, GeoAction, GeoState } from "./types";
 
 export function createInitialGeoState(isScreenLandscape: boolean): GeoState {
   return {
     activePointId: null,
-    placeFillCategory: PLACE_FILL_CATEGORY.PLACEMENT,
     isScreenLandscape,
+    portraitView: PORTRAIT_VIEW.SPLIT,
+    placeFillCategory: PLACE_FILL_CATEGORY.PLACEMENT,
   };
 }
 
@@ -38,6 +39,16 @@ export function geoReducer(state: GeoState, action: GeoAction): GeoState {
       return {
         ...state,
         isScreenLandscape,
+      };
+    }
+    case GEO_ACTION_TYPE.UPDATE_PORTRAIT_VIEW: {
+      const { payload: requestedPortraitView } = action;
+      const { portraitView } = state;
+      const nextPortraitView =
+        requestedPortraitView !== null ? requestedPortraitView : portraitView;
+      return {
+        ...state,
+        portraitView: nextPortraitView,
       };
     }
     default:
