@@ -1,8 +1,9 @@
-import { PLACE_FILL_CATEGORY } from "../types";
+import { PLACE_FILL_CATEGORY, PORTRAIT_VIEW } from "../types";
 import { GEO_ACTION_TYPE, GeoAction, GeoState } from "./types";
 
 export const initialGeoState: GeoState = {
   activePointId: null,
+  portraitView: PORTRAIT_VIEW.SPLIT,
   placeFillCategory: PLACE_FILL_CATEGORY.PLACEMENT,
 };
 
@@ -28,6 +29,16 @@ export function geoReducer(state: GeoState, action: GeoAction): GeoState {
       return {
         ...state,
         placeFillCategory: nextPlaceFillCategory,
+      };
+    }
+    case GEO_ACTION_TYPE.UPDATE_PORTRAIT_VIEW: {
+      const { payload: requestedPortraitView } = action;
+      const { portraitView } = state;
+      const nextPortraitView =
+        requestedPortraitView !== null ? requestedPortraitView : portraitView;
+      return {
+        ...state,
+        portraitView: nextPortraitView,
       };
     }
     default:

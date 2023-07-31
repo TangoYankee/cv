@@ -9,10 +9,15 @@ import { GeoCtx } from "./state/context";
 import { placePoints } from "./data";
 import { PLACE_FILL_OPERATION, getPointOutlineColor } from "./geoStyles";
 import "./geoMap.css";
+import { Box } from "./components/ui";
+import { useScreenPortraitQuery } from "./utils/hooks";
+import { PORTRAIT_VIEW } from "./types";
 
 export default function GeoMap() {
+  const isScreenPortrait = useScreenPortraitQuery();
+
   const {
-    geoState: { activePointId, placeFillCategory },
+    geoState: { activePointId, placeFillCategory, portraitView },
     geoActionsDispatch: { updateActivePointId },
   } = useContext(GeoCtx);
 
@@ -36,19 +41,28 @@ export default function GeoMap() {
   ];
 
   return (
-    <DeckGL
-      layers={layers}
-      initialViewState={{
-        longitude: -74.0008,
-        latitude: 40.7018,
-        zoom: 9.7,
-      }}
-      controller={true}
+    <Box
+      height={
+        isScreenPortrait && portraitView === PORTRAIT_VIEW.PANEL
+          ? "0.1%"
+          : "100%"
+      }
+      width="100%"
     >
-      <Map
-        mapLib={maplibregl}
-        mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_ACCESS_TOKEN}`}
-      />
-    </DeckGL>
+      <DeckGL
+        layers={layers}
+        initialViewState={{
+          longitude: -74.0008,
+          latitude: 40.7018,
+          zoom: 9.7,
+        }}
+        controller={true}
+      >
+        <Map
+          mapLib={maplibregl}
+          mapStyle={`https://api.maptiler.com/maps/streets-v2/style.json?key=${process.env.NEXT_PUBLIC_MAPLIBRE_ACCESS_TOKEN}`}
+        />
+      </DeckGL>
+    </Box>
   );
 }
