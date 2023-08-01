@@ -1,8 +1,8 @@
 import { createContext } from "react";
-import { createInitialGeoState } from "./reducer";
+import { initialGeoState } from "./reducer";
 import { GeoCtxType } from "./types";
 
 export const GeoCtx = createContext<GeoCtxType>({
-  geoState: createInitialGeoState(true),
+  geoState: initialGeoState,
   geoActionsDispatch: {} as any,
 });

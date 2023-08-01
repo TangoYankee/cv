@@ -1,30 +1,18 @@
 "use client";
 
-import { useEffect, useReducer } from "react";
-import { createInitialGeoState, geoReducer } from "./state/reducer";
+import { useReducer } from "react";
+import { initialGeoState, geoReducer } from "./state/reducer";
 import { geoActions } from "./state/actions";
 import { GeoCtx } from "./state/context";
 import GeoMap from "./geoMap";
 import { Panel } from "./components/panel";
-import { Box, useMediaQuery } from "./components/ui";
-import { SIMPLE_SCREEN_ORIENTATION } from "./types";
+import { Box } from "./components/ui";
+import { useScreenLandscapeQuery } from "./utils/hooks";
 
 export function Main() {
-  const isScreenLandscape = useMediaQuery(
-    `(orientation: ${SIMPLE_SCREEN_ORIENTATION.LANDSCAPE})`,
-  );
-  const [geoState, geoDispatch] = useReducer(
-    geoReducer,
-    isScreenLandscape,
-    createInitialGeoState,
-  );
+  const isScreenLandscape = useScreenLandscapeQuery();
+  const [geoState, geoDispatch] = useReducer(geoReducer, initialGeoState);
   const geoActionsDispatch = geoActions(geoDispatch);
-  const { updateIsScreenLandscape } = geoActionsDispatch;
-
-  useEffect(() => {
-    updateIsScreenLandscape(isScreenLandscape);
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, [isScreenLandscape]);
 
   return (
     <main>
