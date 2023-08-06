@@ -7,7 +7,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext } from "react";
 import { GeoCtx } from "./state/context";
 import { placePoints } from "./data";
-import { PLACE_FILL_OPERATION, getPointOutlineColor } from "./geoStyles";
+import { getPointOutlineColor } from "./geoStyles";
 import "./geoMap.css";
 import { Box } from "./components/ui";
 import { useScreenPortraitQuery } from "./utils/hooks";
@@ -17,7 +17,7 @@ export default function GeoMap() {
   const isScreenPortrait = useScreenPortraitQuery();
 
   const {
-    geoState: { activePointId, placeFillCategory, portraitView },
+    geoState: { activePointId, portraitView },
     geoActionsDispatch: { updateActivePointId },
   } = useContext(GeoCtx);
 
@@ -31,11 +31,8 @@ export default function GeoMap() {
       onClick: (info) => updateActivePointId(info.object.properties.id),
       getLineColor: (d) =>
         getPointOutlineColor(d?.properties?.id, activePointId),
-      getFillColor: (d) =>
-        PLACE_FILL_OPERATION[placeFillCategory](d?.properties?.id),
       updateTriggers: {
         getLineColor: [activePointId],
-        getFillColor: [placeFillCategory],
       },
     }),
   ];

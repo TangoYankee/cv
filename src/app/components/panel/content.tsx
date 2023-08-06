@@ -1,15 +1,13 @@
 import { places, placeNames } from "@/app/data";
-import { PLACE_FILL_CATEGORY } from "@/app/types";
 import { Box, Stack, ToggleButton, ToggleButtonGroup } from "../ui";
 import { GeoCtx } from "@/app/state/context";
 import { ActivePointId } from "@/app/state/types";
 import React, { useContext } from "react";
-import { Option } from "@/types";
 
 export function Content() {
   const {
-    geoState: { activePointId, placeFillCategory },
-    geoActionsDispatch: { updateActivePointId, updatePlaceFillCategory },
+    geoState: { activePointId },
+    geoActionsDispatch: { updateActivePointId },
   } = useContext(GeoCtx);
 
   const handleUpdateActivePointId = (
@@ -19,10 +17,6 @@ export function Content() {
     updateActivePointId(requestedActivePointId);
   };
 
-  const handleUpdatePlaceFillCategory = (
-    _event: React.MouseEvent<HTMLElement>,
-    requestedPlaceFillCategory: Option<PLACE_FILL_CATEGORY>,
-  ) => updatePlaceFillCategory(requestedPlaceFillCategory);
   return (
     <Box>
       <Stack direction="row">
@@ -36,18 +30,6 @@ export function Content() {
               {placeNames[placeId]}
             </ToggleButton>
           ))}
-        </ToggleButtonGroup>
-      </Stack>
-      <Stack direction="row">
-        <ToggleButtonGroup
-          value={placeFillCategory}
-          exclusive
-          onChange={handleUpdatePlaceFillCategory}
-        >
-          <ToggleButton value={PLACE_FILL_CATEGORY.PLACEMENT}>
-            Placement
-          </ToggleButton>
-          <ToggleButton value={PLACE_FILL_CATEGORY.TYPE}>Type</ToggleButton>
         </ToggleButtonGroup>
       </Stack>
     </Box>

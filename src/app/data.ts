@@ -5,13 +5,6 @@ export const placeNames: Record<number, string> = {
   1: "Battery",
 };
 
-export const placeTypes: Record<number, string> = { 0: "building", 1: "park" };
-
-export const placePlacements: Record<number, string> = {
-  0: "inland",
-  1: "waterfront",
-};
-
 export const placePoints = {
   type: "FeatureCollection",
   features: [

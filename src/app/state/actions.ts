@@ -1,6 +1,6 @@
 import { Dispatch } from "react";
 import { ActivePointId, GEO_ACTION_TYPE, GeoAction } from "./types";
-import { PLACE_FILL_CATEGORY, PORTRAIT_VIEW } from "../types";
+import { PORTRAIT_VIEW } from "../types";
 import { Option } from "@/types";
 
 export const geoActions = (dispatch: Dispatch<GeoAction>) => {
@@ -9,11 +9,6 @@ export const geoActions = (dispatch: Dispatch<GeoAction>) => {
       dispatch({
         type: GEO_ACTION_TYPE.UPDATE_ACTIVE_POINT_ID,
         payload: activePointId,
-      }),
-    updatePlaceFillCategory: (placeFillCategory: Option<PLACE_FILL_CATEGORY>) =>
-      dispatch({
-        type: GEO_ACTION_TYPE.UPDATE_PLACE_FILL_CATEGORY,
-        payload: placeFillCategory,
       }),
     updatePortraitView: (portraitView: Option<PORTRAIT_VIEW>) =>
       dispatch({
