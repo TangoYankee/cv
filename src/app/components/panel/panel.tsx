@@ -13,9 +13,11 @@ export function Panel() {
   return (
     <>
       {isScreenPortrait ? (
-        <Box>
+        <Box height={portraitView === PORTRAIT_VIEW.SPLIT ? "40%" : "unset"}>
           <PortraitView />
           <Box
+            height="100%"
+            overflow="scroll"
             sx={{
               display: portraitView === PORTRAIT_VIEW.MAP ? "none" : "inherit",
             }}
@@ -24,7 +26,9 @@ export function Panel() {
           </Box>
         </Box>
       ) : (
-        <Content />
+        <Box width="30%">
+          <Content />
+        </Box>
       )}
     </>
   );

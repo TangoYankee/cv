@@ -3,8 +3,12 @@ export {
   Box,
   ButtonGroup,
   Button,
+  Card,
+  CardActionArea,
+  CardContent,
   Drawer,
   Link,
+  Paper,
   Stack,
   ToggleButtonGroup,
   ToggleButton,
@@ -12,5 +16,6 @@ export {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+export { purple } from "@mui/material/colors";
 
 export { FooterLink } from "./links";

@@ -1,7 +1,6 @@
 import { places, placeNames } from "@/app/data";
-import { Box, ToggleButton, ToggleButtonGroup } from "../ui";
+import { Box, Stack, Card, CardContent, CardActionArea, purple } from "../ui";
 import { GeoCtx } from "@/app/state/context";
-import { ActivePointId } from "@/app/state/types";
 import React, { useContext } from "react";
 
 export function Content() {
@@ -10,27 +9,25 @@ export function Content() {
     geoActionsDispatch: { updateActivePointId },
   } = useContext(GeoCtx);
 
-  const handleUpdateActivePointId = (
-    _event: React.MouseEvent<HTMLElement>,
-    requestedActivePointId: ActivePointId,
-  ) => {
-    updateActivePointId(requestedActivePointId);
-  };
-
   return (
-    <Box>
-      <ToggleButtonGroup
-        value={activePointId}
-        exclusive
-        onChange={handleUpdateActivePointId}
-        orientation="vertical"
-      >
+    <Box height="100%" width="100%" overflow="scroll">
+      <Stack spacing={2}>
         {places.map((placeId) => (
-          <ToggleButton key={placeId} value={placeId}>
-            {placeNames[placeId]}
-          </ToggleButton>
+          <Card
+            key={placeId}
+            sx={{
+              backgroundColor: placeId === activePointId ? purple[100] : "",
+              position: placeId === activePointId ? "sticky" : "",
+              top: placeId === activePointId ? "0" : "",
+              zIndex: placeId === activePointId ? "1" : "",
+            }}
+          >
+            <CardActionArea onClick={() => updateActivePointId(placeId)}>
+              <CardContent>{placeNames[placeId]}</CardContent>
+            </CardActionArea>
+          </Card>
         ))}
-      </ToggleButtonGroup>
+      </Stack>
     </Box>
   );
 }
