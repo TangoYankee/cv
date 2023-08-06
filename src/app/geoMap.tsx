@@ -49,9 +49,9 @@ export default function GeoMap() {
       <DeckGL
         layers={layers}
         initialViewState={{
-          longitude: -74.0008,
-          latitude: 40.7018,
-          zoom: 9.7,
+          longitude: -94.5792,
+          latitude: 39.0543,
+          zoom: 2,
         }}
         controller={true}
       >
