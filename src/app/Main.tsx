@@ -8,7 +8,6 @@ import GeoMap from "./geoMap";
 import { Panel } from "./components/panel";
 import { Box } from "./components/ui";
 import { useScreenPortraitQuery } from "./utils/hooks";
-import styles from "./Main.module.css";
 
 export function Main() {
   const isScreenPortrait = useScreenPortraitQuery();
@@ -16,7 +15,7 @@ export function Main() {
   const geoActionsDispatch = geoActions(geoDispatch);
 
   return (
-    <main className={styles.mainContainer}>
+    <main>
       <GeoCtx.Provider value={{ geoState, geoActionsDispatch }}>
         <Box
           display="flex"

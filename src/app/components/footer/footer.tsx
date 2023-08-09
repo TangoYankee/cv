@@ -1,5 +1,4 @@
 import { Toolbar, FooterLink } from "../ui";
-import styles from "./footer.module.css";
 
 const footerLinks = [
   {
@@ -18,13 +17,12 @@ const footerLinks = [
 
 export function Footer() {
   return (
-    <footer className={styles.footerContainer}>
+    <footer>
       <Toolbar
         sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-evenly",
-          backgroundColor: "white",
         }}
       >
         {footerLinks.map((link, index) => (
