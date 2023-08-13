@@ -1,3 +1,5 @@
+import { FeatureCollection, Point } from "@/types";
+
 export const places: Array<number> = [0, 1, 2, 3, 4, 5, 6];
 
 export const placeNames: Record<number, string> = {
@@ -10,7 +12,7 @@ export const placeNames: Record<number, string> = {
   6: "CUNY Hunter",
 };
 
-export const placePoints = {
+export const placePoints: FeatureCollection<Point, { id: number }> = {
   type: "FeatureCollection",
   features: [
     {
