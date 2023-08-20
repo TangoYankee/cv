@@ -8,8 +8,6 @@ import {
 } from "./types";
 import { MONTH, monthYearTimeString } from "../utils";
 
-export const places: Array<number> = [0, 1, 2, 3, 4, 5, 6];
-
 export const placeNames: Record<number, string> = {
   0: "Equitable",
   1: "Stratacache",
@@ -40,6 +38,25 @@ export const positions: Array<Position> = [
     awards: [],
   },
 ];
+
+export const locationsIndex = positions.reduce(
+  (
+    locationsRecord: Array<Set<number> | undefined>,
+    { id: positionId, locations },
+  ) => {
+    locations.forEach(({ id: locationId }) => {
+      let locationRecord = locationsRecord[locationId];
+      if (locationRecord === undefined) {
+        locationRecord = new Set([positionId]);
+      } else {
+        locationRecord.add(positionId);
+      }
+      locationsRecord[locationId] = locationRecord;
+    });
+    return locationsRecord;
+  },
+  [],
+);
 
 export const locationPoints: FeatureCollection<Point, { id: number }> = {
   type: "FeatureCollection",

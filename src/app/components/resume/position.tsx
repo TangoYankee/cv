@@ -1,30 +1,26 @@
-import { placeNames } from "@/app/data";
 import { Card, CardContent, CardActionArea, purple } from "../ui";
 import React from "react";
-import { ActivePointId } from "@/app/state/types";
+import { Position } from "@/app/data/types";
 
 export interface ResumePositionProps {
-  placeId: number;
-  activePointId: ActivePointId;
-  updateActivePointId: () => void;
+  position: Position;
+  isHighlighted: boolean;
+  updateActivePositionId: () => void;
 }
 
 export function ResumePosition({
-  placeId,
-  activePointId,
-  updateActivePointId,
+  position,
+  isHighlighted,
+  updateActivePositionId,
 }: ResumePositionProps) {
   return (
     <Card
       sx={{
-        backgroundColor: placeId === activePointId ? purple[100] : "",
-        position: placeId === activePointId ? "sticky" : "",
-        top: placeId === activePointId ? "0" : "",
-        zIndex: placeId === activePointId ? "1" : "",
+        backgroundColor: isHighlighted ? purple[100] : "",
       }}
     >
-      <CardActionArea onClick={updateActivePointId}>
-        <CardContent>{placeNames[placeId]}</CardContent>
+      <CardActionArea onClick={updateActivePositionId}>
+        <CardContent>{position.title}</CardContent>
       </CardActionArea>
     </Card>
   );

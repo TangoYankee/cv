@@ -17,8 +17,8 @@ export default function GeoMap() {
   const isScreenPortrait = useScreenPortraitQuery();
 
   const {
-    geoState: { activePointId, portraitView },
-    geoActionsDispatch: { updateActivePointId },
+    geoState: { activeLocationId, highlightedLocationsIds, portraitView },
+    geoActionsDispatch: { updateActiveLocationId },
   } = useContext(GeoCtx);
 
   const layers = [
@@ -28,11 +28,15 @@ export default function GeoMap() {
       pointRadiusMinPixels: 5,
       lineWidthMinPixels: 2,
       pickable: true,
-      onClick: (info) => updateActivePointId(info.object.properties.id),
+      onClick: (info) => updateActiveLocationId(info.object.properties.id),
       getLineColor: (d) =>
-        getPointOutlineColor(d?.properties?.id, activePointId),
+        getPointOutlineColor(
+          d?.properties?.id,
+          activeLocationId,
+          highlightedLocationsIds,
+        ),
       updateTriggers: {
-        getLineColor: [activePointId],
+        getLineColor: [activeLocationId, highlightedLocationsIds],
       },
     }),
   ];
