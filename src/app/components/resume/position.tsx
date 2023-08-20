@@ -1,4 +1,12 @@
-import { Card, CardContent, CardActionArea, purple } from "../ui";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardActionArea,
+  purple,
+  List,
+  ListItem,
+} from "../ui";
 import React from "react";
 import { Position } from "@/app/data/types";
 
@@ -20,7 +28,19 @@ export function ResumePosition({
       }}
     >
       <CardActionArea onClick={updateActivePositionId}>
-        <CardContent>{position.title}</CardContent>
+        <CardContent>
+          <Box display="flex" flexDirection="column">
+            <Box>
+              {position.title}{" "}
+              {`${position.startDate.getMonth()}/${position.startDate.getFullYear()}`}
+            </Box>
+            <List>
+              {position.locations.map(({ id: locationId, city }) => (
+                <ListItem key={`${position.id}-${locationId}`}>{city}</ListItem>
+              ))}
+            </List>
+          </Box>
+        </CardContent>
       </CardActionArea>
     </Card>
   );
