@@ -3,6 +3,7 @@ import { Option } from "@/types";
 export interface Location {
   id: number;
   title: LOCATION;
+  city: string;
 }
 
 export interface Award {
@@ -15,10 +16,10 @@ export interface Award {
 export interface Position {
   id: number;
   title: string;
-  start_date: Date;
-  end_date: Option<Date>;
+  startDate: Date;
+  endDate: Option<Date>;
   achievements: Array<string>;
-  software_tools: Array<SOFTWARE_TOOL>;
+  softwareTools: Array<SOFTWARE_TOOL>;
   responsibilities: Array<RESPONSIBILITY>;
   organization: ORGANIZATION;
   locations: Array<Location>;

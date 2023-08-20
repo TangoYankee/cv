@@ -6,7 +6,7 @@ import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { useContext } from "react";
 import { GeoCtx } from "./state/context";
-import { placePoints } from "./data";
+import { locationPoints } from "./data";
 import { getPointOutlineColor } from "./geoStyles";
 import "./geoMap.css";
 import { Box } from "./components/ui";
@@ -24,7 +24,7 @@ export default function GeoMap() {
   const layers = [
     new GeoJsonLayer({
       id: "coding",
-      data: placePoints,
+      data: locationPoints,
       pointRadiusMinPixels: 5,
       lineWidthMinPixels: 2,
       pickable: true,

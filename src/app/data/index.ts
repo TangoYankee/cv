@@ -1,4 +1,12 @@
 import { FeatureCollection, Point } from "@/types";
+import {
+  LOCATION,
+  ORGANIZATION,
+  Position,
+  RESPONSIBILITY,
+  SOFTWARE_TOOL,
+} from "./types";
+import { MONTH, monthYearTimeString } from "../utils";
 
 export const places: Array<number> = [0, 1, 2, 3, 4, 5, 6];
 
@@ -12,7 +20,28 @@ export const placeNames: Record<number, string> = {
   6: "CUNY Hunter",
 };
 
-export const placePoints: FeatureCollection<Point, { id: number }> = {
+export const positions: Array<Position> = [
+  {
+    id: 0,
+    title: "Front End Developer",
+    startDate: monthYearTimeString(MONTH.SEP, "2020"),
+    endDate: monthYearTimeString(MONTH.JUL, "2022"),
+    achievements: [],
+    softwareTools: [SOFTWARE_TOOL.TS, SOFTWARE_TOOL.REACT, SOFTWARE_TOOL.PIXI],
+    responsibilities: [RESPONSIBILITY.FRONT_END],
+    organization: ORGANIZATION.TENET3,
+    locations: [
+      {
+        id: 1,
+        title: LOCATION.STRATACACHE,
+        city: "Dayton, OH",
+      },
+    ],
+    awards: [],
+  },
+];
+
+export const locationPoints: FeatureCollection<Point, { id: number }> = {
   type: "FeatureCollection",
   features: [
     {
