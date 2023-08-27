@@ -40,6 +40,39 @@ export const positions: Array<Position> = [
     ],
     awards: [],
   },
+  {
+    id: 1,
+    title: "Full Stack Contributor",
+    startDate: monthYearTimeString(MONTH.APR, "2018"),
+    endDate: monthYearTimeString(MONTH.APR, "2022"),
+    achievements: [
+      "Built web application for citizen scientist group to manage air quality data",
+      "Designed & implemented geospatial features, allowing users to visualize data they collected throughout their neighborhood",
+    ],
+    softwareTools: [
+      SOFTWARE_TOOL.JS,
+      SOFTWARE_TOOL.REACT,
+      SOFTWARE_TOOL.DJANGO_REST,
+      SOFTWARE_TOOL.POSTGIS,
+      SOFTWARE_TOOL.MAPBOX,
+      SOFTWARE_TOOL.DOCKER,
+    ],
+    responsibilities: [
+      RESPONSIBILITY.FRONT_END,
+      RESPONSIBILITY.BACK_END,
+      RESPONSIBILITY.FULL_STACK,
+      RESPONSIBILITY.PROJECT_MANAGER,
+    ],
+    organization: ORGANIZATION.CFA,
+    locations: [
+      {
+        id: 2,
+        title: LOCATION.OAKLAND_CITY_HALL,
+        city: "Oakland, CA",
+      },
+    ],
+    awards: [],
+  },
 ];
 
 export const locationsIndex = positions.reduce(
