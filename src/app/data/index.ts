@@ -24,7 +24,10 @@ export const positions: Array<Position> = [
     title: "Front End Developer",
     startDate: monthYearTimeString(MONTH.SEP, "2020"),
     endDate: monthYearTimeString(MONTH.JUL, "2022"),
-    achievements: [],
+    achievements: [
+      "Developed web-based application to help security analysts model complex systems",
+      "Assisted in converting model renderer from object-oriented to entity-component-system architecture, increasing performance and maintainability",
+    ],
     softwareTools: [SOFTWARE_TOOL.TS, SOFTWARE_TOOL.REACT, SOFTWARE_TOOL.PIXI],
     responsibilities: [RESPONSIBILITY.FRONT_END],
     organization: ORGANIZATION.TENET3,
