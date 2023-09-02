@@ -14,7 +14,13 @@ export function Panel() {
     <>
       {isScreenPortrait ? (
         <Box
-          height={portraitView === PORTRAIT_VIEW.SPLIT ? "40%" : "unset"}
+          height={
+            portraitView === PORTRAIT_VIEW.SPLIT
+              ? "40%"
+              : portraitView === PORTRAIT_VIEW.PANEL
+              ? "100%"
+              : "unset"
+          }
           sx={{ display: "flex", flexDirection: "column" }}
         >
           <PortraitView />
