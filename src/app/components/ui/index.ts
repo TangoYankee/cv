@@ -7,6 +7,7 @@ export {
   CardActionArea,
   CardContent,
   Drawer,
+  IconButton,
   Link,
   List,
   ListItem,
@@ -18,7 +19,15 @@ export {
   Typography,
   useMediaQuery,
 } from "@mui/material";
+export type { IconButtonProps } from "@mui/material";
 export { purple } from "@mui/material/colors";
 
+export { AnglesDownBtn, AnglesUpBtn, GripLinesBtn } from "./buttons";
 export { FooterLink } from "./links";
-export { AnglesDownIcon, AnglesUpIcon, GripLinesIcon } from "./icons";
+export {
+  AnglesDownIcon,
+  AngleDownIcon,
+  AnglesUpIcon,
+  AngleUpIcon,
+  GripLinesIcon,
+} from "./icons";

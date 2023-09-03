@@ -1,41 +1,13 @@
-import React, { useContext } from "react";
-import {
-  AnglesDownIcon,
-  AnglesUpIcon,
-  GripLinesIcon,
-  ToggleButton,
-  ToggleButtonGroup,
-} from "../ui";
-import { GeoCtx } from "@/app/state/context";
-import { PORTRAIT_VIEW } from "@/app/types";
+import React from "react";
+import { Stack } from "../ui";
+import { MapViewBtn, PanelViewBtn, SplitViewBtn } from "./panelButtons";
 
 export function PortraitView() {
-  const {
-    geoState: { portraitView },
-    geoActionsDispatch: { updatePortraitView },
-  } = useContext(GeoCtx);
-
-  const handleUpdatePortraitView = (
-    _event: React.MouseEvent<HTMLElement>,
-    requestedPortraitView: PORTRAIT_VIEW,
-  ) => updatePortraitView(requestedPortraitView);
   return (
-    <ToggleButtonGroup
-      value={portraitView}
-      exclusive
-      onChange={handleUpdatePortraitView}
-      size="small"
-      sx={{ display: "flex", justifyContent: "space-evenly" }}
-    >
-      <ToggleButton value={PORTRAIT_VIEW.MAP}>
-        <AnglesDownIcon />
-      </ToggleButton>
-      <ToggleButton value={PORTRAIT_VIEW.SPLIT}>
-        <GripLinesIcon />
-      </ToggleButton>
-      <ToggleButton value={PORTRAIT_VIEW.PANEL}>
-        <AnglesUpIcon />
-      </ToggleButton>
-    </ToggleButtonGroup>
+    <Stack direction="row" spacing={10} justifyContent="center">
+      <MapViewBtn />
+      <SplitViewBtn />
+      <PanelViewBtn />
+    </Stack>
   );
 }
