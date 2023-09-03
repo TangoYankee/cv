@@ -8,6 +8,7 @@ import {
   IconButtonProps,
 } from "../ui";
 import { AngleDownBtn, AngleUpBtn } from "../ui/buttons";
+import { PanelCtx } from "./context";
 
 export function MapViewBtn(props: IconButtonProps) {
   const {
@@ -15,9 +16,11 @@ export function MapViewBtn(props: IconButtonProps) {
     geoActionsDispatch: { updatePortraitView },
   } = useContext(GeoCtx);
 
+  const setMapView = () => updatePortraitView(PORTRAIT_VIEW.MAP);
+
   return (
     <AnglesDownBtn
-      onClick={() => updatePortraitView(PORTRAIT_VIEW.MAP)}
+      onClick={setMapView}
       disabled={PORTRAIT_VIEW.MAP === portraitView}
       size="small"
       {...props}
@@ -31,9 +34,11 @@ export function PanelViewBtn(props: IconButtonProps) {
     geoActionsDispatch: { updatePortraitView },
   } = useContext(GeoCtx);
 
+  const setPanelView = () => updatePortraitView(PORTRAIT_VIEW.PANEL);
+
   return (
     <AnglesUpBtn
-      onClick={() => updatePortraitView(PORTRAIT_VIEW.PANEL)}
+      onClick={setPanelView}
       disabled={PORTRAIT_VIEW.PANEL === portraitView}
       size="small"
       {...props}
@@ -42,6 +47,7 @@ export function PanelViewBtn(props: IconButtonProps) {
 }
 
 export function SplitViewBtn({ ...props }: IconButtonProps) {
+  const { startResizingPanel } = useContext(PanelCtx);
   const {
     geoState: { portraitView },
     geoActionsDispatch: { updatePortraitView },
@@ -61,7 +67,7 @@ export function SplitViewBtn({ ...props }: IconButtonProps) {
       return (
         <GripLinesBtn
           size="small"
-          disabled={PORTRAIT_VIEW.SPLIT === portraitView}
+          onPointerDown={startResizingPanel}
           {...props}
         />
       );
