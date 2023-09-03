@@ -10,6 +10,7 @@ import {
 } from "../ui";
 import React from "react";
 import { Position } from "@/app/data/types";
+import { oxfordCommas } from "@/app/utils";
 
 export interface ResumePositionProps {
   position: Position;
@@ -40,22 +41,22 @@ export function ResumePosition({
             <Typography paragraph={true}>
               {`${position.startDate.getMonth()}/${position.startDate.getFullYear()} - ${position.endDate?.getMonth()}/${position.endDate?.getFullYear()}`}
             </Typography>
-            <List>
-              {position.locations.map(({ id: locationId, city }) => (
-                <ListItem key={`${position.id}-${locationId}`}>
-                  <Typography paragraph={true}>{city}</Typography>
-                </ListItem>
-              ))}
-            </List>
+            <Box>
+              <Typography variant="h5" component="h5">
+                Locations:
+              </Typography>
+              <Typography paragraph={true}>
+                {oxfordCommas(
+                  position.locations.map((location) => location.city),
+                )}
+              </Typography>
+            </Box>
             <Box>
               <Typography variant="h5" component="h5">
                 Tools:
               </Typography>
               <Typography paragraph={true}>
-                {position.softwareTools.reduce(
-                  (tools, tool) => tools.concat(`${tool} `),
-                  "",
-                )}
+                {oxfordCommas(position.softwareTools)}
               </Typography>
             </Box>
             <Box>
