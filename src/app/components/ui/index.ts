@@ -21,3 +21,4 @@ export {
 export { purple } from "@mui/material/colors";
 
 export { FooterLink } from "./links";
+export { AnglesDownIcon, AnglesUpIcon, GripLinesIcon } from "./icons";
