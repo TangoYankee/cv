@@ -43,7 +43,7 @@ export function ResumePosition({
             </Typography>
             <Box>
               <Typography variant="h5" component="h5">
-                Locations:
+                Locations
               </Typography>
               <Typography paragraph={true}>
                 {oxfordCommas(
@@ -53,7 +53,7 @@ export function ResumePosition({
             </Box>
             <Box>
               <Typography variant="h5" component="h5">
-                Tools:
+                Tools
               </Typography>
               <Typography paragraph={true}>
                 {oxfordCommas(position.softwareTools)}
