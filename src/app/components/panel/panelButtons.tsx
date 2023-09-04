@@ -47,7 +47,7 @@ export function PanelViewBtn(props: IconButtonProps) {
 }
 
 export function SplitViewBtn({ ...props }: IconButtonProps) {
-  const { startResizingPanel } = useContext(PanelCtx);
+  const { startResizingPanel, resetPanelHeight } = useContext(PanelCtx);
   const {
     geoState: { portraitView },
     geoActionsDispatch: { updatePortraitView },
@@ -68,6 +68,7 @@ export function SplitViewBtn({ ...props }: IconButtonProps) {
         <GripLinesBtn
           size="small"
           onPointerDown={startResizingPanel}
+          onDoubleClick={resetPanelHeight}
           {...props}
         />
       );
