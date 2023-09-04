@@ -18,6 +18,7 @@ export function Main() {
     <main>
       <GeoCtx.Provider value={{ geoState, geoActionsDispatch }}>
         <Box
+          id="content-container"
           display="flex"
           flexDirection={isScreenPortrait ? "column" : "row"}
           height="100%"
